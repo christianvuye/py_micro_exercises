@@ -1,5 +1,6 @@
 # type: ignore
 
-x = lambda x: x*3
+multiply = lambda a,b:a*b
 
-print(x(5))
+print(multiply(2,4))
+print(multiply(4,8))
