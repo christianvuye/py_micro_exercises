@@ -24,6 +24,12 @@ def count_non_empty_fields(list_of_dicts):
 
 print(count_non_empty_fields(customer_profiles))
 
-count_non_empty_fields_fp = map(count_non_empty_fields, customer_profiles)
+def count_non_empty_fields_2(dictionary):  # Takes ONE dictionary
+    count = len(dictionary)
+    for field in dictionary.values():
+        if not field:
+            count -= 1
+    return count
 
-print(list(count_non_empty_fields_fp))
+quality_scores = map(count_non_empty_fields_2, customer_profiles)
+print(list(quality_scores))
