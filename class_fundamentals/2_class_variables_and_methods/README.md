@@ -1,0 +1,1 @@
+Focuses on attributes and methods that belong to the class itself, not just an instance.

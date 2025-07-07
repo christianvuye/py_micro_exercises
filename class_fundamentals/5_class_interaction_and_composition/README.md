@@ -1,0 +1,1 @@
+Examples where instances of different classes interact with each other or where one class is "composed" of other objects.

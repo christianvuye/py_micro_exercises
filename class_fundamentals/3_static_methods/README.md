@@ -1,0 +1,1 @@
+Focuses on the `@staticmethod` decorator, for utility functions that are related to a class but do not depend on class or instance state.

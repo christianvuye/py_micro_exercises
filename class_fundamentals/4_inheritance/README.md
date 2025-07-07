@@ -1,0 +1,1 @@
+Demonstrates how a child class can inherit and extend the functionality of a parent class.

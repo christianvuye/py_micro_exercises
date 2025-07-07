@@ -1,0 +1,1 @@
+Classes with methods that `return self` to allow for calling multiple methods in a single, fluid line.

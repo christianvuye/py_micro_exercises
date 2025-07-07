@@ -1,0 +1,1 @@
+Classes that perform significant logic, validation, or have flexible arguments within their `__init__` method.

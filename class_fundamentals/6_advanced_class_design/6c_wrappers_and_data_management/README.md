@@ -1,0 +1,1 @@
+Classes designed to manage resources, wrap external services, or format/parse complex data.
