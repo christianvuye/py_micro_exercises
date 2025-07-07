@@ -27,7 +27,16 @@ This repository is a collection of Python micro-projects designed for practice a
 
 ## Directory Structure
 
-- **`class_fundamentals/`**: Contains standalone scripts demonstrating core Object-Oriented Programming (OOP) concepts. Each file is a self-contained example of a class and its usage.
+- **`class_fundamentals/`**: Contains standalone scripts demonstrating core Object-Oriented Programming (OOP) concepts, organized into subdirectories by concept:
+    - **`1_core_concepts/`**: Files demonstrating the fundamental building blocks of classes: `__init__`, instance variables, and basic instance methods.
+    - **`2_class_variables_and_methods/`**: Focuses on attributes and methods that belong to the class itself, not just an instance.
+    - **`3_static_methods/`**: Focuses on the `@staticmethod` decorator, for utility functions that are related to a class but do not depend on class or instance state.
+    - **`4_inheritance/`**: Demonstrates how a child class can inherit and extend the functionality of a parent class.
+    - **`5_class_interaction_and_composition/`**: Examples where instances of different classes interact with each other or where one class is "composed" of other objects.
+    - **`6_advanced_class_design/`**: Contains more advanced class design patterns, further categorized:
+        - **`6a_method_chaining/`**: Classes with methods that `return self` to allow for calling multiple methods in a single, fluid line.
+        - **`6b_initialization_and_validation/`**: Classes that perform significant logic, validation, or have flexible arguments within their `__init__` method.
+        - **`6c_wrappers_and_data_management/`**: Classes designed to manage resources, wrap external services, or format/parse complex data.
 - **`data_normalization/`**: Includes scripts for cleaning and standardizing common data formats (e.g., emails, phone numbers). This directory also contains the project's tests.
 - **`fp_concepts/`**: A collection of small, focused examples illustrating functional programming concepts in Python, such as `map`, `filter`, `reduce`, and `lambda` functions.
 - **`fp_in_de/`**: Contains scripts that show the practical application of functional programming concepts in the context of data engineering tasks.
@@ -36,7 +45,7 @@ This repository is a collection of Python micro-projects designed for practice a
 
 - **`data_normalization/normalize_emails.py`**: An example of a data normalization script.
 - **`data_normalization/test_data_normalize_emails.py`**: An example of a test file.
-- **`class_fundamentals/class_member_book.py`**: A good example of a more complex class interaction.
+- **`class_fundamentals/5_class_interaction_and_composition/class_member_book_clean.py`**: A good example of a more complex class interaction.
 
 ## User Preferences
 
