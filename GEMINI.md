@@ -61,7 +61,7 @@ Essentially, it's a single command to automate the entire sequence of staging, c
 
 ## Logging
 
-To enable detailed logging of the AI agent's actions, tool calls, and outputs, use the command `start logging` at the beginning of a new conversation session. This will create a new timestamped log file (e.g., `agent_YYMMDD.log`) within the `agent_logs/` directory in the project root. Each session will have its own log file, providing a comprehensive, AI-readable record of the interaction.
+To enable detailed logging of the AI agent's actions, tool calls, and outputs, use the command `start logging` at the beginning of a new conversation session. This will create a new timestamped log file (e.g., `agent_YYMMDD_conversation_nr_X.log`) within the `agent_logs/` directory in the project root. Each session will have its own unique log file, providing a comprehensive, AI-readable record of the interaction.
 
 **Important Note:** As the AI agent cannot automatically initiate logging at the start of a new conversation, please remember to issue the `start logging` command if you wish to enable this feature. The agent will also remind you of this at the beginning of new conversations.
 
