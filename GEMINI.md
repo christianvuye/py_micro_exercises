@@ -58,3 +58,25 @@ The user has established a custom command, `sync`, which encapsulates the entire
 5.  **Commits, Pushes, and Cleans Up:** Once the user approves the message, it automatically commits the changes, pushes them to the `origin master` branch, and removes any temporary files used during the process.
 
 Essentially, it's a single command to automate the entire sequence of staging, committing, and pushing code, complete with an AI-generated commit message.
+
+## Logging
+
+To enable detailed logging of the AI agent's actions, tool calls, and outputs, use the command `start logging` at the beginning of a new conversation session. This will append to the `agent.log` file in the project root, providing a comprehensive, AI-readable record of the interaction across sessions.
+
+**Important Note:** As the AI agent cannot automatically initiate logging at the start of a new conversation, please remember to issue the `start logging` command if you wish to enable this feature. The agent will also remind you of this at the beginning of new conversations.
+
+**Log Entry Template:**
+
+```
+⏺ <Timestamp> <Agent Action/Thought>
+  <Tool Call (if applicable)>
+  ⎿ <Tool Output (if applicable)>
+```
+Example:
+```
+⏺ 2025-07-06 10:30:00 Checking for changes to sync.
+  Bash(git status)
+  ⎿ On branch master
+    Your branch is up to date with 'origin/master'.
+    nothing to commit, working tree clean
+```
