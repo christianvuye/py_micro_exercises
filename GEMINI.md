@@ -82,3 +82,12 @@ Example:
     Your branch is up to date with 'origin/master'.
     nothing to commit, working tree clean
 ```
+
+### Logging Workaround
+
+Due to current tool limitations, the agent simulates appending to log files by:
+1. Reading the entire existing content of the log file into its memory.
+2. Appending the new log entry to that content in its memory.
+3. Writing the entire combined content back to the file using `write_file`, which overwrites the old file with the new, larger content.
+
+This method allows for continuous logging but is a manual process that requires reading and rewriting the entire file for each new entry. It can be less efficient for very large log files and theoretically more prone to issues if not perfectly synchronized.
