@@ -1,6 +1,6 @@
-# Gemini Project Context: Python Practice Microprojects
+# Claude Project Context: Python Practice Microprojects
 
-This file provides context for the Gemini AI assistant to effectively assist with this project.
+This file provides context for the Claude AI assistant to effectively assist with this project.
 
 ## Project Overview
 
@@ -58,5 +58,4 @@ The user has established a custom command, `sync`, which encapsulates the entire
 5.  **Commits, Pushes, and Cleans Up:** Once the user approves the message, it automatically commits the changes, pushes them to the `origin master` branch, and removes any temporary files used during the process.
 
 Essentially, it's a single command to automate the entire sequence of staging, committing, and pushing code, complete with an AI-generated commit message.
-
 
