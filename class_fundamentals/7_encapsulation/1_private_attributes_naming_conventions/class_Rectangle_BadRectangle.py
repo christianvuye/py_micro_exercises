@@ -94,7 +94,7 @@ good_rect.__width = -10  # This creates a NEW attribute!
 
 print("After assignment:")
 print([attr for attr in dir(good_rect) if 'width' in attr])
-print(f"Internal width (still protected): {good_rect._Rectangle__width}")
+print(f"Internal width (still protected): {good_rect._Rectangle__width}") # type: ignore
 print(f"New external width: {good_rect.__width}")
 print(f"get_area() still works correctly: {good_rect.get_area()}")
 
