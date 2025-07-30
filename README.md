@@ -17,7 +17,12 @@ This section contains dozens of standalone scripts demonstrating core OOP concep
 - **`7_encapsulation/`**: Best practices for data hiding using private attributes and properties.
 
 ### 2. Integrated Practice (`class_integrated_practice/`)
-These are larger, more comprehensive exercises that require combining multiple OOP concepts to solve a practical problem, such as building a weather station or a movie ticketing system.
+The integrated practice exercises in `class_integrated_practice` are designed to help you practice combining multiple Object-Oriented Programming (OOP) concepts in Python. Unlike the focused, single-concept scripts in `class_fundamentals`, these exercises are larger and more realistic. They require you to:
+
+- Integrate several OOP principles (like inheritance, class/instance/static methods, encapsulation, and composition) in one solution.
+- Design and implement small systems (e.g., a weather station, movie ticketing system) that reflect real-world business problems.
+- Handle vague or incomplete requirements, simulating real-world software development where you must clarify, design, and justify your choices.
+- Practice code organization, validation, and maintainability—skills needed for long-term, production-quality code.
 
 ### 3. Data & Functional Programming (`data_normalization/`)
 This area focuses on data processing and functional programming techniques.
