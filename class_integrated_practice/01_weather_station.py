@@ -24,7 +24,7 @@ print(station.get_condition())           # Expected: "Warm"
 print(str(station))                      # Expected: "WeatherStation(Downtown, 3 readings)"
 """
 
-from typing import List, Optional, Union
+from typing import List, Union
 
 class WeatherStation:
     VALID_UNITS: List[str] = ['C', 'F']
