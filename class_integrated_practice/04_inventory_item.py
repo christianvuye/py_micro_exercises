@@ -13,13 +13,13 @@ Business Requirements:
 - Support multiple warehouse locations
 - Handle product status changes and stock movements
 
-Your stakeholder says: "We need to track inventory across our warehouses. Each product 
-should know its stock level, location, and whether we need to reorder. The system should 
+Your stakeholder says: "We need to track inventory across our warehouses. Each product
+should know its stock level, location, and whether we need to reorder. The system should
 keep track of all products and tell us which ones are running low."
 
 # Test your class:
 item1 = InventoryItem("Laptop", quantity=50, location="Warehouse A")
-item2 = InventoryItem("Mouse", quantity=5, location="Warehouse B") 
+item2 = InventoryItem("Mouse", quantity=5, location="Warehouse B")
 item3 = InventoryItem("Keyboard", quantity=200, location="Warehouse A")
 
 item1.update_quantity(-10)  # Sell 10 laptops
@@ -32,6 +32,7 @@ print(InventoryItem.get_inventory_summary()) # Expected: system-wide summary
 """
 
 from typing import List
+
 
 class InventoryItem:
     """
@@ -47,7 +48,7 @@ class InventoryItem:
     PRODUCTS: List[str] = ["Laptop", "Mouse", "Keyboard", "Monitor", "Tablet"]
     LOCATIONS: List[str] = ["Warehouse A", "Warehouse B", "Warehouse C", "Store Front"]
 
-    total_inventory: List['InventoryItem'] = []
+    total_inventory: List["InventoryItem"] = []
 
     def __init__(self, product_name: str, quantity: int, location: str) -> None:
         """
@@ -77,7 +78,7 @@ class InventoryItem:
         self.quantity = quantity
         self.location = location
 
-        InventoryItem.total_inventory.append(self) #store the instance directly
+        InventoryItem.total_inventory.append(self)  # store the instance directly
 
     def update_quantity(self, amount: int) -> None:
         """
@@ -103,10 +104,12 @@ class InventoryItem:
             raise TypeError(f"{amount} is not an integer!")
 
         if amount < 0 and self.quantity < abs(amount):
-            raise ValueError(f"Cannot sell {abs(amount)} items as there are only {self.quantity} in stock")
+            raise ValueError(
+                f"Cannot sell {abs(amount)} items as there are only {self.quantity} in stock"
+            )
 
         self.quantity += amount
-        
+
     def is_low_stock(self) -> bool:
         """
         Check if the inventory item is low in stock.
@@ -134,7 +137,7 @@ class InventoryItem:
             f"Status: {status}"
         )
 
-    @classmethod  
+    @classmethod
     def get_low_stock_items(cls):
         """
         Class method that returns a formatted string listing all items with low stock.
@@ -146,7 +149,9 @@ class InventoryItem:
         low_stock = [item for item in cls.total_inventory if item.is_low_stock()]
         if not low_stock:
             return "No low stock items."
-        return "\n".join(f"{item.product_name}: {item.quantity} left" for item in low_stock)
+        return "\n".join(
+            f"{item.product_name}: {item.quantity} left" for item in low_stock
+        )
 
     @classmethod
     def get_inventory_summary(cls) -> List[str]:
@@ -160,20 +165,24 @@ class InventoryItem:
         Returns:
             list: A list of strings, each representing an inventory item.
         """
-        return [f"{item.product_name} {item.quantity} at {item.location}" for item in cls.total_inventory]
+        return [
+            f"{item.product_name} {item.quantity} at {item.location}"
+            for item in cls.total_inventory
+        ]
+
 
 # Test your class:
 item1 = InventoryItem("Laptop", quantity=50, location="Warehouse A")
-item2 = InventoryItem("Mouse", quantity=5, location="Warehouse B") 
+item2 = InventoryItem("Mouse", quantity=5, location="Warehouse B")
 item3 = InventoryItem("Keyboard", quantity=200, location="Warehouse A")
 
 item1.update_quantity(-10)  # Sell 10 laptops
-item2.update_quantity(-3)   # Sell 3 mice
+item2.update_quantity(-3)  # Sell 3 mice
 
-print(item1.get_status())                    # Expected: status info
-print(item2.is_low_stock())                  # Expected: True (only 2 left)
-print(InventoryItem.get_low_stock_items())   # Expected: list of items needing reorder
-print(InventoryItem.get_inventory_summary()) # Expected: system-wide summary
+print(item1.get_status())  # Expected: status info
+print(item2.is_low_stock())  # Expected: True (only 2 left)
+print(InventoryItem.get_low_stock_items())  # Expected: list of items needing reorder
+print(InventoryItem.get_inventory_summary())  # Expected: system-wide summary
 
 """
 === BUSINESS COMMUNICATION SUMMARY ===

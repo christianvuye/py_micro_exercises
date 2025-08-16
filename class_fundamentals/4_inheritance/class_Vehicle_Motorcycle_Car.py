@@ -24,17 +24,21 @@ print(f"A car now has {car.get_wheel_count()} wheels.")
 print(f"A motorcycle now has {motorcycle.get_wheel_count()} wheels.")
 """
 
+
 class Vehicle:
     wheels = 4
 
     def get_wheel_count(self):
         return self.wheels
-    
+
+
 class Motorcycle(Vehicle):
     wheels = 2
 
+
 class Car(Vehicle):
-    pass 
+    pass
+
 
 # Create instances of each class
 car = Car()

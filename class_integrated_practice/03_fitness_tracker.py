@@ -13,13 +13,13 @@ Business Requirements:
 - Generate community-wide fitness insights NOT DONE
 - Handle various measurement units and data validation NOT DONE -> clarify what different units business stakeholder wants
 
-Your stakeholder says: "We're building a fitness app. Users log workouts - steps, 
-calories, exercise minutes. We need personal stats for each user, but also want to 
+Your stakeholder says: "We're building a fitness app. Users log workouts - steps,
+calories, exercise minutes. We need personal stats for each user, but also want to
 see community totals across all our users for marketing purposes."
 
 # Test your class:
 user1 = FitnessTracker("Alice")
-user1.log_workout(steps=8000, calories=300, minutes=45)  
+user1.log_workout(steps=8000, calories=300, minutes=45)
 user1.log_workout(steps=12000, calories=450, minutes=60)
 
 user2 = FitnessTracker("Bob")
@@ -30,6 +30,7 @@ print(user1.get_average_calories())      # Expected: 375.0
 print(FitnessTracker.get_global_stats()) # Expected: community-wide data
 print(str(user1))                        # Expected: user summary
 """
+
 
 class FitnessTracker:
     global_total_users: int = 0
@@ -50,14 +51,14 @@ class FitnessTracker:
         """
         if not isinstance(name, str):
             raise TypeError(f"{name} is not a string!")
-        
+
         self.name = name
         self.total_steps = 0
         self.total_calories = 0
         self.total_minutes = 0
         self.total_workouts = 0
         FitnessTracker.global_total_users += 1
-    
+
     def __str__(self) -> str:
         """
         Returns a human-readable description of the Fitness Tracker instance.
@@ -65,15 +66,17 @@ class FitnessTracker:
         Returns:
             str: A summary of the user's fitness statistics.
         """
-        return (f"User: {self.name}\n"
-                f"Total Workouts: {self.total_workouts}\n"
-                f"Total Steps: {self.total_steps}\n"
-                f"Total Calories: {self.total_calories}\n"
-                f"Total Minutes: {self.total_minutes}\n"
-                f"Average Steps per Workout: {self.get_average_steps():.1f}\n"
-                f"Average Calories per Workout: {self.get_average_calories():.1f}\n"
-                f"Average Minutes per Workout: {self.get_average_minutes():.1f}")
-    
+        return (
+            f"User: {self.name}\n"
+            f"Total Workouts: {self.total_workouts}\n"
+            f"Total Steps: {self.total_steps}\n"
+            f"Total Calories: {self.total_calories}\n"
+            f"Total Minutes: {self.total_minutes}\n"
+            f"Average Steps per Workout: {self.get_average_steps():.1f}\n"
+            f"Average Calories per Workout: {self.get_average_calories():.1f}\n"
+            f"Average Minutes per Workout: {self.get_average_minutes():.1f}"
+        )
+
     def log_workout(self, steps: int, calories: int, minutes: int) -> None:
         """
         Logs a workout session by updating the user's and class's total steps, calories, minutes, and workout count.
@@ -102,7 +105,7 @@ class FitnessTracker:
         FitnessTracker.global_total_calories += calories
         FitnessTracker.global_total_minutes += minutes
         FitnessTracker.global_total_workouts += 1
-    
+
     def get_total_steps(self) -> int:
         """
         Gets the total number of steps logged by the user.
@@ -111,7 +114,7 @@ class FitnessTracker:
             int: The total number of steps recorded for this user.
         """
         return self.total_steps
-    
+
     def get_total_calories(self) -> int:
         """
         Gets the total number of calories burned by the user.
@@ -120,7 +123,7 @@ class FitnessTracker:
             int: The total number of calories recorded for this user.
         """
         return self.total_calories
-    
+
     def get_total_minutes(self) -> int:
         """
         Gets the total number of workout minutes logged by the user.
@@ -129,7 +132,7 @@ class FitnessTracker:
             int: The total number of minutes recorded for this user.
         """
         return self.total_minutes
-    
+
     def get_total_workouts(self) -> int:
         """
         Gets the total number of workouts logged by the user.
@@ -138,7 +141,7 @@ class FitnessTracker:
             int: The total number of workouts recorded for this user.
         """
         return self.total_workouts
-    
+
     def get_average_steps(self) -> float:
         """
         Calculates the average number of steps per workout for the user.
@@ -148,9 +151,9 @@ class FitnessTracker:
         """
         if self.total_workouts == 0:
             return 0
-        
+
         return self.total_steps / self.total_workouts
-    
+
     def get_average_calories(self) -> float:
         """
         Calculates the average number of calories burned per workout for the user.
@@ -160,9 +163,9 @@ class FitnessTracker:
         """
         if self.total_workouts == 0:
             return 0
-        
+
         return self.total_calories / self.total_workouts
-    
+
     def get_average_minutes(self) -> float:
         """
         Calculates the average number of minutes per workout for the user.
@@ -172,9 +175,9 @@ class FitnessTracker:
         """
         if self.total_workouts == 0:
             return 0
-        
+
         return self.total_minutes / self.total_workouts
-    
+
     @classmethod
     def get_global_stats(cls) -> str:
         """
@@ -202,18 +205,19 @@ class FitnessTracker:
             f"Average Minutes per Workout: {avg_minutes:.1f}"
         )
 
+
 # Test your class:
 user1 = FitnessTracker("Alice")
-user1.log_workout(steps=8000, calories=300, minutes=45)  
+user1.log_workout(steps=8000, calories=300, minutes=45)
 user1.log_workout(steps=12000, calories=450, minutes=60)
 
 user2 = FitnessTracker("Bob")
 user2.log_workout(steps=5000, calories=200, minutes=30)
 
-print(user1.get_total_steps())           # Expected: 20000
-print(user1.get_average_calories())      # Expected: 375.0
-print(FitnessTracker.get_global_stats()) # Expected: community-wide data
-print(str(user1))                        # Expected: user summary
+print(user1.get_total_steps())  # Expected: 20000
+print(user1.get_average_calories())  # Expected: 375.0
+print(FitnessTracker.get_global_stats())  # Expected: community-wide data
+print(str(user1))  # Expected: user summary
 
 """
 === BUSINESS COMMUNICATION SUMMARY ===

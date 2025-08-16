@@ -12,8 +12,8 @@ Business Requirements:
 - Apply discounts for special circumstances
 - Track theater capacity and ticket sales
 
-Your stakeholder says: "We need a ticket system that charges different prices based on 
-age and showtime. Kids and seniors get discounts. Matinee shows are cheaper. 
+Your stakeholder says: "We need a ticket system that charges different prices based on
+age and showtime. Kids and seniors get discounts. Matinee shows are cheaper.
 Also track how many tickets we've sold."
 
 # Test your class:
@@ -28,6 +28,7 @@ print(str(ticket1))                  # Expected: meaningful ticket description
 """
 
 from typing import Any, List
+
 
 class MovieTicket:
     BASE_ADULT_PRICE: int = 12
@@ -53,23 +54,25 @@ class MovieTicket:
         if isinstance(movie, str):
             self.movie = movie
         else:
-            raise TypeError("Movie should be a string!") 
+            raise TypeError("Movie should be a string!")
         self.customer_type = self._validate_customer_type(customer_type)
         self.showtime = self._validate_showtime(showtime)
 
         MovieTicket.total_tickets_sold += 1
-    
+
     def __str__(self) -> str:
         """
         Returns a human-readable description of the ticket.
         """
-        return (f"MovieTicket: '{self.movie}' | Customer: {self.customer_type.capitalize()} | "
-                f"Showtime: {self.showtime.capitalize()} | Price: ${self.get_price():.2f}")
-    
+        return (
+            f"MovieTicket: '{self.movie}' | Customer: {self.customer_type.capitalize()} | "
+            f"Showtime: {self.showtime.capitalize()} | Price: ${self.get_price():.2f}"
+        )
+
     def get_price(self) -> float:
         """
         Calculates and returns the ticket price based on customer type and showtime.
-        
+
         Returns:
             float: The calculated ticket price after applying any applicable discounts.
         Notes:
@@ -82,7 +85,7 @@ class MovieTicket:
             base_price = self.BASE_CHILD_PRICE
         else:
             base_price = self.BASE_SENIOR_PRICE
-        
+
         if self.showtime == "matinee":
             matinee_adjusted_price = base_price * self.MATINEE_DISCOUNT
             return matinee_adjusted_price
@@ -97,7 +100,7 @@ class MovieTicket:
             int: The number of seats still available for sale, based on the theater's total capacity and the total tickets sold.
         """
         return cls.THEATER_CAPACITY - cls.total_tickets_sold
-    
+
     @classmethod
     def get_total_sales(cls) -> int:
         """
@@ -129,7 +132,7 @@ class MovieTicket:
         if customer_type.lower() not in customer_types:
             raise ValueError(f"{customer_type} should be one of: {customer_types}")
         return customer_type.lower()
-    
+
     @staticmethod
     def _validate_showtime(showtime: Any) -> str:
         """
@@ -151,17 +154,17 @@ class MovieTicket:
         if showtime.lower() not in showtimes:
             raise ValueError(f"{showtime} should be one of: {showtimes}")
         return showtime.lower()
-    
+
 
 # Test your class:
 ticket1 = MovieTicket("Avatar", "adult", "evening")
 ticket2 = MovieTicket("Avatar", "child", "matinee")
 ticket3 = MovieTicket("Avatar", "senior", "evening")
 
-print(ticket1.get_price())           # Expected: varies based on your pricing
-print(ticket2.get_price())           # Expected: lower than adult
-print(MovieTicket.get_total_sales()) # Expected: total from all tickets
-print(str(ticket1))                  # Expected: meaningful ticket description
+print(ticket1.get_price())  # Expected: varies based on your pricing
+print(ticket2.get_price())  # Expected: lower than adult
+print(MovieTicket.get_total_sales())  # Expected: total from all tickets
+print(str(ticket1))  # Expected: meaningful ticket description
 
 """
 === BUSINESS COMMUNICATION SUMMARY ===

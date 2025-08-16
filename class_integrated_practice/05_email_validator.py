@@ -8,14 +8,14 @@ Concepts practiced:
 
 Business Requirements:
 - Validate email addresses against business standards
-- Process large batches of emails efficiently  
+- Process large batches of emails efficiently
 - Generate detailed validation reports with error categories
 - Support different validation strictness levels
 - Provide statistics on validation results
 
-Your stakeholder says: "We import customer email lists from various sources - spreadsheets, 
-APIs, forms. The data quality is inconsistent. We need a validator that can process thousands 
-of emails and tell us what's wrong with the bad ones. Some campaigns need strict validation, 
+Your stakeholder says: "We import customer email lists from various sources - spreadsheets,
+APIs, forms. The data quality is inconsistent. We need a validator that can process thousands
+of emails and tell us what's wrong with the bad ones. Some campaigns need strict validation,
 others can be more lenient."
 
 # Test your class:
@@ -37,8 +37,9 @@ print(EmailValidator.is_valid("test@example.com"))  # Expected: True/False
 print(report)                               # Expected: detailed validation report
 """
 
-from typing import List
 from re import compile, fullmatch
+from typing import List
+
 
 class EmailValidator:
     """
@@ -94,9 +95,9 @@ class EmailValidator:
 
     pattern_invalid_chars = compile(
         r'[<>()[\]\\,;:\s@"]'
-        r'|.*@.*[^a-zA-Z0-9.-].*$'
-        r'|.*@.*_.*$'
-        r'|[^\x00-\x7F]'
+        r"|.*@.*[^a-zA-Z0-9.-].*$"
+        r"|.*@.*_.*$"
+        r"|[^\x00-\x7F]"
     )
 
     pattern_violate_bizrules = compile(
@@ -121,7 +122,9 @@ class EmailValidator:
         Returns:
             List[str]: Valid email addresses from the input list, according to the selected rules.
         """
-        pattern = EmailValidator.pattern_strict if strict else EmailValidator.pattern_lenient
+        pattern = (
+            EmailValidator.pattern_strict if strict else EmailValidator.pattern_lenient
+        )
         return [e for e in emails if isinstance(e, str) and fullmatch(pattern, e)]
 
     @staticmethod
@@ -131,13 +134,15 @@ class EmailValidator:
 
         Args:
             email (str): The email address to validate.
-            strict (bool, optional): If True, uses a stricter validation pattern. 
+            strict (bool, optional): If True, uses a stricter validation pattern.
                 If False, uses a more lenient pattern. Defaults to False.
 
         Returns:
             bool: True if the email address is valid according to the selected pattern, False otherwise.
         """
-        pattern = EmailValidator.pattern_strict if strict else EmailValidator.pattern_lenient
+        pattern = (
+            EmailValidator.pattern_strict if strict else EmailValidator.pattern_lenient
+        )
         return isinstance(email, str) and bool(fullmatch(pattern, email))
 
     @staticmethod
@@ -161,9 +166,15 @@ class EmailValidator:
             - "other_violation": Emails that do not fit any of the above categories.
         """
         cats = {
-            "wrong_type": [], "valid_strict": [], "valid_lenient": [],
-            "typos": [], "missing_parts": [], "wrong_formatting": [],
-            "invalid_chars": [], "violate_bizrules": [], "other_violation": []
+            "wrong_type": [],
+            "valid_strict": [],
+            "valid_lenient": [],
+            "typos": [],
+            "missing_parts": [],
+            "wrong_formatting": [],
+            "invalid_chars": [],
+            "violate_bizrules": [],
+            "other_violation": [],
         }
         for email in emails:
             if not isinstance(email, str):
@@ -210,8 +221,10 @@ class EmailValidator:
         """
         c = EmailValidator.categorize_batch(emails)
         total = len(emails)
+
         def pct(n):
-            return f"{(n/total*100):5.1f}%" if total else "0.0%"
+            return f"{(n / total * 100):5.1f}%" if total else "0.0%"
+
         return (
             "Email Validation Report:\n"
             f"  Total processed:       {total}\n"
@@ -226,6 +239,7 @@ class EmailValidator:
             f"  Other violations:      {len(c['other_violation']):3d}  ({pct(len(c['other_violation']))})"
         )
 
+
 # Test your class:
 emails = [
     "valid@example.com",
@@ -233,16 +247,16 @@ emails = [
     "user@domain",
     "test@valid-site.org",
     "",
-    "admin@company.co.uk"
+    "admin@company.co.uk",
 ]
 
 valid_emails = EmailValidator.validate_batch(emails)
 report = EmailValidator.generate_report(emails)
 strict_valid = EmailValidator.validate_batch(emails, strict=True)
 
-print(len(valid_emails))                    # Expected: count of valid emails
+print(len(valid_emails))  # Expected: count of valid emails
 print(EmailValidator.is_valid("test@example.com"))  # Expected: True/False
-print(report)                               # Expected: detailed validation report
+print(report)  # Expected: detailed validation report
 
 """
 === BUSINESS COMMUNICATION SUMMARY ===
