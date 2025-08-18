@@ -149,7 +149,6 @@ class MediaPlayer:
             TypeError: If file is not a string.
             ValueError: If file does not match the filename pattern or has an invalid extension.
         """
-        "docstring"
         if not isinstance(file, str):
             raise TypeError(f"{file} should be a str, got {type(file).__name__}")
         if not MediaPlayer.FILE_PATTERN.fullmatch(file):
