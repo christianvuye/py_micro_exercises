@@ -31,27 +31,37 @@ print(doc1.get_patient_count())  # Should show 1
 print(patient1.get_patient_summary())  # Should show patient with both doctors
 """
 
+
 class Doctor:
     def __init__(self, name, speciality):
         self.name = name
         self.speciality = speciality
         self.patients = []
-    
+
     def add_patient(self, patient):
-        self.patients.append(patient) # add a patient instance to doctor instance
-    
-    def remove_patient(self, patient_name): # you want to remove the patient object, not the string
-        for patient in self.patients: # for every patient object in the list of patients
-            if patient.name == patient_name: # if the patient object name matches the patient_name in the param
-                self.patients.remove(patient) # remove that patient object from the list of the doctors patients
-                break # break the loop so there is no more compute spent on searching for that patient in the list
-    
+        self.patients.append(patient)  # add a patient instance to doctor instance
+
+    def remove_patient(
+        self, patient_name
+    ):  # you want to remove the patient object, not the string
+        for (
+            patient
+        ) in self.patients:  # for every patient object in the list of patients
+            if (
+                patient.name == patient_name
+            ):  # if the patient object name matches the patient_name in the param
+                self.patients.remove(
+                    patient
+                )  # remove that patient object from the list of the doctors patients
+                break  # break the loop so there is no more compute spent on searching for that patient in the list
+
     def get_patient_count(self):
         return len(self.patients)
-    
+
     def get_doctor_info(self):
         return f"Doctor name: {self.name}, speciality:{self.speciality}, amount of patients: {self.get_patient_count()}"
-    
+
+
 class Patient:
     def __init__(self, name, patient_id):
         self.name = name
@@ -60,19 +70,22 @@ class Patient:
 
     def assign_doctor(self, doctor):
         self.doctors.append(doctor)
-    
-    def remove_doctor(self, doctor_name): # same pattern as above
+
+    def remove_doctor(self, doctor_name):  # same pattern as above
         for doctor in self.doctors:
             if doctor.name == doctor_name:
                 self.doctors.remove(doctor)
                 break
-        
-    def get_care_team(self): # this needs to return the name of the doctors, not the doctor objects
+
+    def get_care_team(
+        self,
+    ):  # this needs to return the name of the doctors, not the doctor objects
         return [doctor.name for doctor in self.doctors]
 
     def get_patient_summary(self):
         return f"Patient name: {self.name}, id:{self.patient_id}, doctors: {self.get_care_team()}"
-    
+
+
 # Test your system:
 doc1 = Doctor("Dr. Smith", "Cardiology")
 doc2 = Doctor("Dr. Johnson", "Neurology")

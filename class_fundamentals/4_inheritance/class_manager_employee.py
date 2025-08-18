@@ -29,21 +29,25 @@ print(manager.get_team_size())      # Should print 2
 print(emp1.get_employee_details())  # Should show "Manager: Christian"
 """
 
+
 class Employee:
     def __init__(self, name, employee_id, role):
         self.name = name
         self.employee_id = employee_id
         self.role = role
         self.manager = None
-    
-    def assign_manager(self, manager): # this could be removed
+
+    def assign_manager(self, manager):  # this could be removed
         # self.manager = manager
         # Don't allow direct assignment - force through manager
-        raise ValueError(f"Cannot assign {manager} from the Employee, use manager.add_direct_report() instead")
-    
+        raise ValueError(
+            f"Cannot assign {manager} from the Employee, use manager.add_direct_report() instead"
+        )
+
     def get_employee_details(self):
         manager_name = self.manager.name if self.manager else "No manager assigned"
         return f"Employee name: {self.name}, Employee_id: {self.employee_id}, Role: {self.role}, Manager: {manager_name}"
+
 
 """
 Single Entry Point Pattern for Bidirectional Relationships:
@@ -54,26 +58,27 @@ Single Entry Point Pattern for Bidirectional Relationships:
 - Simpler debugging - only one code path to check when issues arise
 """
 
+
 class Manager:
     def __init__(self, name, employee_id):
         self.name = name
         self.employee_id = employee_id
         self.direct_reports = []
-    
+
     def add_direct_report(self, employee):
         self.direct_reports.append(employee)
         employee.manager = self
-    
+
     def remove_direct_report(self, employee_name):
         for employee in self.direct_reports:
             if employee.name == employee_name:
                 self.direct_reports.remove(employee)
-                employee.manager = None # Clear the reverse relationship
+                employee.manager = None  # Clear the reverse relationship
                 break
-    
+
     def get_team_size(self):
         return len(self.direct_reports)
-    
+
 
 manager = Manager("Christian", "M001")
 emp1 = Employee("Alice", "E001", "Developer")
@@ -83,5 +88,5 @@ emp2 = Employee("Bob", "E002", "Designer")
 manager.add_direct_report(emp1)
 manager.add_direct_report(emp2)
 
-print(manager.get_team_size())      # Should print 2
+print(manager.get_team_size())  # Should print 2
 print(emp1.get_employee_details())  # Should show "Manager: Christian"

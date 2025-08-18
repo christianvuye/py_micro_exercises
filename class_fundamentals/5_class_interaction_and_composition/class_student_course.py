@@ -35,22 +35,23 @@ class Course:
         self.course_code = course_code
         self.max_students = max_students
         self.enrolled_students = []
-    
+
     def add_student(self, student):
-        if self.is_full(): return False
-        
+        if self.is_full():
+            return False
+
         self.enrolled_students.append(student)
         return True
 
     def is_full(self):
         return len(self.enrolled_students) >= self.max_students
-    
+
     def remove_student(self, student_name):
         for enrolled_student in self.enrolled_students:
             if enrolled_student.name == student_name:
                 self.enrolled_students.remove(enrolled_student)
                 break
-    
+
     def get_course_info(self):
         return f"Course name: {self.course_name}, course code: {self.course_code}, enrollment count: {len(self.enrolled_students)}"
 
@@ -60,10 +61,10 @@ class Student:
         self.name = name
         self.student_id = student_id
         self.enrolled_courses = []
-    
+
     def enroll_in_course(self, course):
         self.enrolled_courses.append(course)
-    
+
     def drop_course(self, course_name):
         for enrolled_course in self.enrolled_courses:
             if enrolled_course.course_name == course_name:
@@ -71,7 +72,9 @@ class Student:
                 break
 
     def get_student_summary(self):
-        enrolled_courses_names = [enrolled_course.course_name for enrolled_course in self.enrolled_courses]
+        enrolled_courses_names = [
+            enrolled_course.course_name for enrolled_course in self.enrolled_courses
+        ]
         return f"Student name: {self.name}, ID: {self.student_id}, enrolled_courses: {enrolled_courses_names}"
 
 
