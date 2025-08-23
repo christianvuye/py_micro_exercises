@@ -4,7 +4,7 @@ A collection of Python microprojects and exercises for practicing small problems
 
 ## Repository Structure
 
-The repository is organized into three main learning areas:
+The repository is organized into four main learning areas:
 
 ### 1. Object-Oriented Programming (`class_fundamentals/`)
 This section contains dozens of standalone scripts demonstrating core OOP concepts, organized into a logical progression:
@@ -30,6 +30,10 @@ This area focuses on data processing and functional programming techniques.
 - **Functional Programming Concepts (`fp_concepts/`)**: Over 100 small exercises covering `lambda`, `map`, `filter`, `reduce`, and list comprehensions.
 - **FP in Data Engineering (`fp_in_de/`)**: Practical applications of functional patterns in data engineering scenarios.
 
+
+### 4. Data Structures and Algorithms (`dsa/`)
+This section is dedicated to practicing common data structures and algorithms problems, similar to what one might encounter in a technical interview.
+- **`lists/`**: Contains problems that can be solved using lists and associated concepts.
 
 ### Running Individual Exercises
 Each exercise file is a standalone script that can be run directly to see the concept in action:
