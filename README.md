@@ -33,7 +33,8 @@ This area focuses on data processing and functional programming techniques.
 
 ### 4. Data Structures and Algorithms (`dsa/`)
 This section is dedicated to practicing common data structures and algorithms problems, similar to what one might encounter in a technical interview.
-- **`lists/`**: Contains problems that can be solved using lists and associated concepts.
+- **`lists, dicts, sets/`**: Contains problems that can be solved using lists, dictionaries, and sets.
+- **`heuristics/`**: Contains reference guides for time and space complexity analysis.
 
 ### Running Individual Exercises
 Each exercise file is a standalone script that can be run directly to see the concept in action:
