@@ -179,3 +179,39 @@ Space Complexity, worst-case:
     - Returned list will be smaller as it only returns strings from 
       the original list if a certain condition is met
 """
+
+"""
+=== INTERVIEWER COMMUNICATION SUMMARY ===
+
+Initial Request: 
+"Build analytics for web application to identify users with unusually long sessions 
+who might indicate bot activity. Find users with multiple sessions AND at least one 
+session over threshold duration."
+
+Developer Clarifications Asked:
+- "What specific information do I need to track for each user to efficiently check both criteria?"
+- "Do I need to count HOW MANY sessions exceed threshold, or just whether there's at least one?"
+- "Should results be ordered for consistent output?"
+
+Interviewer Responses:
+- Confirmed need to track: session count (for >1 check) and boolean flag (for threshold check)
+- Only need boolean - just whether ANY session exceeds threshold, not count
+- Yes, results should be ordered by user_id for consistency
+
+Final Technical Decisions:
+- Dictionary of dictionaries: {user_id: {"session_count": int, "has_long_session": bool}}
+- Single pass O(n) algorithm processes all sessions once
+- Alternative considered: tuple values (count, boolean) - equally valid
+- Linear O(n) time and space complexity
+- Micro-optimization rejected: checking if boolean already True costs more than assignment
+
+Key Learning Moments:
+- Space complexity heuristics developed: focus on growth rate, not number of data structures
+- Peak memory usage determines space complexity (not just final structures)  
+- Pattern recognition: identified as variation of counting/grouping problem from previous exercises
+
+Assumptions Documented:
+- Each session tuple contains (user_id, duration_minutes) as specified
+- Threshold comparison uses > (strictly greater than)
+- Algorithm scales linearly - suitable for production web analytics
+"""
